@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.multi.maven.mapper.BaseScheduleJobMapper" >
+  <resultMap id="BaseResultMap" type="com.multi.maven.entity.BaseScheduleJob" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="job_id" property="jobId" jdbcType="VARCHAR" />
+    <result column="job_name" property="jobName" jdbcType="VARCHAR" />
+    <result column="cronexp" property="cronexp" jdbcType="VARCHAR" />
+    <result column="owners" property="owners" jdbcType="VARCHAR" />
+    <result column="bean_id" property="beanId" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+</mapper>

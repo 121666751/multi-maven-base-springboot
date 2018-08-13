@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans.xsd"
+	default-autowire="byName">
+
+	<bean id="webConfig" class="org.springframework.beans.factory.config.MapFactoryBean">
+		<property name="sourceMap">
+			<map>
+				 <!--获取微信公众号配置 -->
+				<entry key="/testRequest.do">
+					<map>
+						<entry key="requestBean" value-ref="helpTestGeneralRequest" />
+						<entry key="service">
+							<bean class="com.multi.maven.domain.ServiceBean">
+								<property name="serviceInstance" ref="testRequestService" />
+								<property name="methodName" value="testRequest" />
+							</bean>
+						</entry>
+					</map>
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+
+</beans>

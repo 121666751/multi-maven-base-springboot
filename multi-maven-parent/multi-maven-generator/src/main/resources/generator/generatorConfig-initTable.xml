@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+
+<generatorConfiguration>
+    <!--<properties resource="config.properties"/>-->
+    <properties resource="config.properties"/>
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <property name="javaFileEncoding" value="utf-8"/>
+
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+            <!-- caseSensitive默认false，当数据库表名区分大小写时，可以将该属性设置为true -->
+            <property name="caseSensitive" value="true"/>
+        </plugin>
+
+        <!--<commentGenerator tyMyCommentGeneratorator"/>-->
+
+        <jdbcConnection driverClass="${jdbc.driver.class}"
+                        connectionURL="${jdbc.url}"
+                        userId="${jdbc.username}" password="${jdbc.password}">
+        </jdbcConnection>
+<!--
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://rm-uf6vht7bh11sef165o.mysql.rds.aliyuncs.com:3306/tt"
+                        userId="hqj" password="tango@123">
+        </jdbcConnection>
+-->
+
+        <!--Model-->
+        <javaModelGenerator targetPackage="${target.package}.entity"
+                            targetProject="${entity.target.project}/java" >
+            <property name="rootClass" value="com.multi.maven.dao.mysql.bean.BaseModel"/>
+        </javaModelGenerator>
+         <!--mapper.xml-->
+        <sqlMapGenerator targetPackage="mappers"
+                         targetProject="${dao.target.project}/resources">
+        </sqlMapGenerator>
+         <!--Dao-->
+        <javaClientGenerator targetPackage="${target.package}.mapper" type="XMLMAPPER"
+                             targetProject="${dao.target.project}/java"/>
+
+        <table tableName="base_sys_param" >
+            <generatedKey column="param_key" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table tableName="base_schedule_job" >
+            <generatedKey column="job_id" sqlStatement="Mysql" identity="true"/>
+        </table>
+    </context>
+</generatorConfiguration>
